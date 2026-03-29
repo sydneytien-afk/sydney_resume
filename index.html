@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,15 +11,12 @@
   :root {
     --bg: #0d0e0f;
     --surface: #141618;
+    --surface2: #181a1d;
     --border: #2a2c2f;
     --gold: #c9a84c;
     --gold-dim: #7a6230;
     --text: #e8e2d9;
     --muted: #6b6660;
-    --accent-bd: #1a3a5c;
-    --accent-hd: #1e3d2f;
-    --accent-wm: #3d1a2e;
-    --accent-reg: #2a2010;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +31,6 @@
     overflow-x: hidden;
   }
 
-  /* ── GRAIN ── */
   body::after {
     content: '';
     position: fixed; inset: 0;
@@ -44,420 +40,303 @@
 
   /* ── HERO ── */
   .hero {
-    position: relative;
-    padding: 100px 6vw 80px;
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
+    position: relative; padding: 100px 6vw 80px;
+    border-bottom: 1px solid var(--border); overflow: hidden;
   }
-
   .hero-glow {
-    position: absolute;
-    top: -200px; right: -100px;
-    width: 700px; height: 700px;
-    border-radius: 50%;
+    position: absolute; top: -200px; right: -100px;
+    width: 700px; height: 700px; border-radius: 50%;
     background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%);
     pointer-events: none;
   }
-
   .hero-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.35em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: rise 0.7s 0.1s forwards;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase;
+    margin-bottom: 28px; opacity: 0; animation: rise 0.7s 0.1s forwards;
   }
-
   .hero-name {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(44px, 7vw, 96px);
-    font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: -0.01em;
-    opacity: 0;
-    animation: rise 0.8s 0.25s forwards;
+    font-size: clamp(44px, 7vw, 96px); font-weight: 400;
+    line-height: 0.95; letter-spacing: -0.01em;
+    opacity: 0; animation: rise 0.8s 0.25s forwards;
   }
-
   .hero-name span { color: var(--gold); font-style: italic; }
-
   .hero-zh {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(18px, 2.5vw, 30px);
-    color: var(--muted);
-    letter-spacing: 0.2em;
-    margin-top: 10px;
-    opacity: 0;
-    animation: rise 0.8s 0.35s forwards;
+    font-size: clamp(18px, 2.5vw, 30px); color: var(--muted);
+    letter-spacing: 0.2em; margin-top: 10px;
+    opacity: 0; animation: rise 0.8s 0.35s forwards;
   }
-
   .hero-divider {
-    width: 60px; height: 1px;
-    background: var(--gold);
-    margin: 36px 0;
-    opacity: 0;
-    animation: rise 0.8s 0.45s forwards;
+    width: 60px; height: 1px; background: var(--gold);
+    margin: 36px 0; opacity: 0; animation: rise 0.8s 0.45s forwards;
   }
-
   .hero-summary {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(15px, 1.8vw, 20px);
-    color: #b0a898;
-    max-width: 640px;
-    line-height: 1.85;
-    opacity: 0;
-    animation: rise 0.8s 0.55s forwards;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: clamp(15px, 1.8vw, 20px); color: #b0a898;
+    max-width: 640px; line-height: 1.85;
+    opacity: 0; animation: rise 0.8s 0.55s forwards;
   }
-
   .hero-stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-top: 52px;
-    opacity: 0;
-    animation: rise 0.8s 0.7s forwards;
+    display: flex; flex-wrap: wrap; gap: 40px; margin-top: 52px;
+    opacity: 0; animation: rise 0.8s 0.7s forwards;
   }
-
   .stat { display: flex; flex-direction: column; gap: 4px; }
-
   .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 38px;
-    font-weight: 700;
-    color: var(--gold);
-    line-height: 1;
+    font-family: 'Playfair Display', serif; font-size: 38px;
+    font-weight: 700; color: var(--gold); line-height: 1;
   }
-
   .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--muted);
-    text-transform: uppercase;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase;
   }
 
   /* ── INSTRUCTION ── */
-  .instruction {
-    text-align: center;
-    padding: 60px 6vw 40px;
-  }
-
+  .instruction { text-align: center; padding: 60px 6vw 40px; }
   .instruction p {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 16px;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; margin-bottom: 16px;
   }
-
   .instruction h3 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 3vw, 34px);
-    font-weight: 400;
-    color: var(--text);
+    font-size: clamp(22px, 3vw, 34px); font-weight: 400; color: var(--text);
   }
-
   .instruction h3 em { color: var(--gold); font-style: italic; }
 
   /* ── ROLE SELECTOR ── */
   .roles {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    margin: 0 6vw;
-    border: 1px solid var(--border);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px; background: var(--border); margin: 0 6vw; border: 1px solid var(--border);
   }
-
   .role-btn {
-    background: var(--surface);
-    padding: 32px 28px;
-    cursor: pointer;
-    border: none;
-    text-align: left;
-    color: var(--text);
-    transition: background 0.3s;
-    position: relative;
-    overflow: hidden;
+    background: var(--surface); padding: 32px 28px; cursor: pointer;
+    border: none; text-align: left; color: var(--text);
+    transition: background 0.3s; position: relative; overflow: hidden;
   }
-
   .role-btn::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
     transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
   }
-
-  .role-btn:hover::before,
-  .role-btn.active::before { transform: scaleX(1); }
-
+  .role-btn:hover::before, .role-btn.active::before { transform: scaleX(1); }
   .role-btn:hover { background: #1a1c1f; }
   .role-btn.active { background: #1c1e21; }
-
-  .role-icon {
-    font-size: 26px;
-    margin-bottom: 14px;
-    display: block;
-  }
-
+  .role-icon { font-size: 26px; margin-bottom: 14px; display: block; }
   .role-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase;
+    margin-bottom: 8px; display: block;
   }
+  .role-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; line-height: 1.3; }
+  .role-hint { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
 
-  .role-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.3;
-    color: var(--text);
-  }
-
-  .role-hint {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 8px;
-    line-height: 1.5;
-  }
-
-  /* ── PITCH PANEL ── */
+  /* ── PITCH AREA ── */
   .pitch-area {
-    margin: 1px 6vw 0;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-top: none;
-    min-height: 100px;
-    overflow: hidden;
-    transition: min-height 0.3s ease;
+    margin: 1px 6vw 0; background: var(--surface);
+    border: 1px solid var(--border); border-top: none;
   }
-
-  .pitch-panel {
-    display: none;
-    padding: 56px 52px;
-    animation: panelIn 0.5s ease forwards;
-  }
-
+  .pitch-panel { display: none; animation: panelIn 0.45s ease forwards; }
   .pitch-panel.active { display: block; }
 
   @keyframes panelIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
+
+  /* ── INNER TABS ── */
+  .panel-tabs { display: flex; border-bottom: 1px solid var(--border); }
+  .panel-tab {
+    flex: 1; background: transparent; border: none; cursor: pointer;
+    padding: 20px 28px; text-align: left;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+    transition: color 0.3s, background 0.3s;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .panel-tab:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+  .panel-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .panel-tab .tab-icon { font-size: 14px; }
+
+  /* ── PITCH TAB ── */
+  .tab-content { display: none; padding: 52px; }
+  .tab-content.active { display: block; }
 
   .pitch-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 24px;
-    margin-bottom: 40px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; justify-content: space-between;
+    flex-wrap: wrap; gap: 24px; margin-bottom: 40px;
+    padding-bottom: 32px; border-bottom: 1px solid var(--border);
   }
-
   .pitch-role-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 10px;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px;
   }
-
   .pitch-role-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(24px, 3vw, 38px);
-    font-weight: 400;
-    line-height: 1.1;
+    font-size: clamp(24px, 3vw, 38px); font-weight: 400; line-height: 1.1;
   }
-
   .pitch-role-title em { font-style: italic; color: var(--gold); }
-
-  .copy-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: border-color 0.3s, color 0.3s;
-    white-space: nowrap;
-    align-self: flex-start;
+  .action-btns { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start; }
+  .copy-btn, .print-btn {
+    background: transparent; border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 10px 20px; cursor: pointer; white-space: nowrap;
+    transition: border-color 0.3s, color 0.3s; color: var(--muted);
   }
-
-  .copy-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .copy-btn:hover, .print-btn:hover { border-color: var(--gold); color: var(--gold); }
   .copy-btn.copied { border-color: #4caf80; color: #4caf80; }
 
-  /* Pitch content blocks */
   .pitch-block { margin-bottom: 36px; }
-
   .pitch-block-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    color: var(--gold-dim);
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.3em; color: var(--gold-dim); text-transform: uppercase;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 12px;
   }
-
-  .pitch-block-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
+  .pitch-block-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .pitch-opening {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(16px, 2vw, 21px);
-    color: #c8c0b4;
-    line-height: 1.85;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: clamp(16px, 2vw, 21px); color: #c8c0b4; line-height: 1.85;
   }
-
-  .pitch-body {
-    font-size: 15.5px;
-    color: #a09890;
-    line-height: 1.9;
-  }
-
+  .pitch-body { font-size: 15.5px; color: #a09890; line-height: 1.9; }
   .pitch-body strong { color: var(--text); font-weight: 700; }
-
-  .pitch-bullets {
-    list-style: none;
-    margin-top: 20px;
-  }
-
+  .pitch-bullets { list-style: none; margin-top: 20px; }
   .pitch-bullets li {
-    font-size: 14.5px;
-    color: #8a8278;
-    line-height: 1.75;
-    padding: 6px 0 6px 22px;
-    position: relative;
+    font-size: 14.5px; color: #8a8278; line-height: 1.75;
+    padding: 6px 0 6px 22px; position: relative;
     border-bottom: 1px solid rgba(255,255,255,0.04);
   }
-
   .pitch-bullets li:last-child { border-bottom: none; }
-
   .pitch-bullets li::before {
-    content: '◆';
-    position: absolute; left: 0;
-    color: var(--gold);
-    font-size: 7px;
-    top: 13px;
+    content: '◆'; position: absolute; left: 0;
+    color: var(--gold); font-size: 7px; top: 13px;
   }
-
   .pitch-cta {
-    background: rgba(201,168,76,0.06);
-    border: 1px solid rgba(201,168,76,0.2);
-    padding: 24px 28px;
-    margin-top: 12px;
-    font-size: 14px;
-    color: #b0a080;
-    line-height: 1.7;
+    background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2);
+    padding: 24px 28px; margin-top: 12px;
+    font-size: 14px; color: #b0a080; line-height: 1.7;
   }
-
   .pitch-cta strong { color: var(--gold); }
-
-  /* Tags */
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
-  }
-
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
   .ptag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    padding: 5px 14px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    text-transform: uppercase;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.1em; padding: 5px 14px;
+    border: 1px solid var(--border); color: var(--muted); text-transform: uppercase;
     transition: border-color 0.3s, color 0.3s;
   }
-
   .ptag:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── COVER LETTER TAB ── */
+  .cl-actions {
+    display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 28px;
+  }
+  .cl-wrap {
+    background: var(--surface2); border: 1px solid var(--border);
+    padding: 52px; position: relative;
+  }
+  .cl-gold-bar {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--gold);
+  }
+  .cl-letterhead {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 20px; margin-bottom: 48px;
+    padding-bottom: 32px; border-bottom: 1px solid var(--border);
+  }
+  .cl-sender-name {
+    font-family: 'Playfair Display', serif; font-size: 26px;
+    font-weight: 700; color: var(--text); letter-spacing: -0.01em;
+  }
+  .cl-sender-name em { color: var(--gold); font-style: italic; }
+  .cl-sender-title {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-top: 6px;
+  }
+  .cl-sender-contact {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); margin-top: 12px; line-height: 1.8;
+  }
+  .cl-date {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.1em;
+  }
+  .cl-body { max-width: 680px; }
+  .cl-salutation {
+    font-family: 'Playfair Display', serif; font-size: 16px;
+    color: var(--text); margin-bottom: 28px;
+  }
+  .cl-para {
+    font-size: 15px; color: #a09890; line-height: 1.95; margin-bottom: 22px;
+  }
+  .cl-para strong { color: var(--text); font-weight: 700; }
+  .cl-para em { color: var(--gold); font-style: normal; }
+  .cl-closing { margin-top: 40px; }
+  .cl-closing-text {
+    font-size: 15px; color: #a09890; line-height: 1.8; margin-bottom: 32px;
+  }
+  .cl-sign {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 28px; color: var(--gold); margin-bottom: 4px;
+  }
+  .cl-sign-name {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase;
+  }
 
   /* ── CONTACT BAR ── */
   .contact-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 40px 6vw;
-    border-top: 1px solid var(--border);
-    margin-top: 60px;
+    display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: 20px;
+    padding: 40px 6vw; border-top: 1px solid var(--border); margin-top: 60px;
   }
-
   .contact-bar-left {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--text);
+    font-family: 'Playfair Display', serif; font-size: 20px;
+    font-weight: 400; color: var(--text);
   }
-
   .contact-bar-left em { font-style: italic; color: var(--gold); }
-
-  .contact-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
+  .contact-links { display: flex; flex-wrap: wrap; gap: 20px; }
   .clink {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.3s;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.1em; color: var(--muted); text-decoration: none;
+    display: flex; align-items: center; gap: 8px; transition: color 0.3s;
   }
-
-  .clink::before {
-    content: '';
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--gold);
-  }
-
+  .clink::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
   .clink:hover { color: var(--gold); }
 
-  /* ── ANIMATIONS ── */
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff !important; color: #111 !important; }
+    body::after, .hero, .instruction, .roles, .panel-tabs,
+    .cl-actions, .contact-bar, .action-btns { display: none !important; }
+    .pitch-panel { display: block !important; }
+    #tc-bd-pitch, #tc-platform-pitch, #tc-wealth-pitch, #tc-reg-pitch { display: none !important; }
+    .tab-content.cl-tab { display: block !important; padding: 0 !important; }
+    .pitch-area { border: none !important; margin: 0 !important; background: transparent !important; }
+    .cl-wrap { background: #fff !important; border: none !important; padding: 0 !important; }
+    .cl-gold-bar { background: #888 !important; }
+    .cl-sender-name, .cl-sign { color: #111 !important; }
+    .cl-sender-name em { color: #444 !important; }
+    .cl-sender-title, .cl-date, .cl-sign-name { color: #555 !important; }
+    .cl-para, .cl-closing-text, .cl-salutation { color: #333 !important; }
+    .cl-letterhead { border-bottom-color: #ccc !important; }
+    .cl-para em { color: #111 !important; }
+    .cl-para strong { color: #000 !important; }
+    .cl-sign { color: #333 !important; }
+  }
+
   @keyframes rise {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 700px) {
-    .pitch-panel { padding: 36px 24px; }
+    .tab-content { padding: 28px 20px; }
+    .cl-wrap { padding: 28px 20px; }
     .roles { margin: 0 4vw; }
     .pitch-area { margin: 1px 4vw 0; }
     .contact-bar { padding: 40px 4vw; flex-direction: column; align-items: flex-start; }
+    .panel-tab { padding: 16px 14px; font-size: 9px; }
+    .cl-letterhead { flex-direction: column; }
   }
 </style>
 </head>
@@ -470,27 +349,12 @@
   <h1 class="hero-name">Sydney <span>Tien</span></h1>
   <p class="hero-zh">田育彬</p>
   <div class="hero-divider"></div>
-  <p class="hero-summary">
-    A seasoned financial services leader with a track record of building institutional distribution networks, 
-    leading regulatory-compliant operations, and bridging Greater China markets with global platforms.
-  </p>
+  <p class="hero-summary">A seasoned financial services leader with a track record of building institutional distribution networks, leading regulatory-compliant operations, and bridging Greater China markets with global platforms.</p>
   <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-num">20+</span>
-      <span class="stat-label">Years Experience</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">3</span>
-      <span class="stat-label">SFC Licence Types</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">4</span>
-      <span class="stat-label">Markets Covered</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">B2B</span>
-      <span class="stat-label">Platform Expert</span>
-    </div>
+    <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Years Experience</span></div>
+    <div class="stat"><span class="stat-num">3</span><span class="stat-label">SFC Licence Types</span></div>
+    <div class="stat"><span class="stat-num">4</span><span class="stat-label">Markets Covered</span></div>
+    <div class="stat"><span class="stat-num">B2B</span><span class="stat-label">Platform Expert</span></div>
   </div>
 </section>
 
@@ -527,223 +391,290 @@
   </button>
 </div>
 
-<!-- ══ PITCH PANELS ══ -->
+<!-- ══ PANELS ══ -->
 <div class="pitch-area">
 
-  <!-- BD -->
+  <!-- ══ BD ══ -->
   <div class="pitch-panel" id="panel-bd">
-    <div class="pitch-header">
-      <div>
-        <div class="pitch-role-label">Pitch for · Business Development & Sales Leadership</div>
-        <div class="pitch-role-title">The <em>deal-maker</em> who opens doors<br>across North Asia</div>
+    <div class="panel-tabs">
+      <button class="panel-tab active" onclick="showTab('bd','pitch')" id="tab-bd-pitch"><span class="tab-icon">📋</span> Pitch Brief</button>
+      <button class="panel-tab" onclick="showTab('bd','cl')" id="tab-bd-cl"><span class="tab-icon">✉️</span> Cover Letter</button>
+    </div>
+
+    <div class="tab-content active" id="tc-bd-pitch">
+      <div class="pitch-header">
+        <div>
+          <div class="pitch-role-label">Pitch for · Business Development & Sales Leadership</div>
+          <div class="pitch-role-title">The <em>deal-maker</em> who opens doors<br>across North Asia</div>
+        </div>
+        <div class="action-btns"><button class="copy-btn" onclick="copyPitch('bd')">Copy Text</button></div>
       </div>
-      <button class="copy-btn" onclick="copyPitch('bd')">Copy Text</button>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Opening</div>
-      <p class="pitch-opening" id="copy-bd">
-        Sydney Tien is a senior business development leader with over 20 years of institutional 
-        sales experience across Hong Kong, Taiwan, and Greater China — with a direct line into 
-        private banks, securities firms, and insurance groups at the C-suite level.
-      </p>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Why He Stands Out</div>
-      <p class="pitch-body">
-        Currently Head of North Asia Business Development at <strong>Euroclear FundPlace</strong>, 
-        Sydney has built the region's institutional client base from the ground up — driving transaction 
-        volume growth and expanding distribution into private banks, insurance firms, and 
-        institutional investors across the region.
-      </p>
-      <ul class="pitch-bullets">
-        <li>Proven revenue generator with track record of exceeding sales targets across ETFs, mutual funds, money market, and alternative products</li>
-        <li>Deep existing network with decision-makers at tier-1 private banks and securities firms in HK, China, and Taiwan</li>
-        <li>Skilled in complex B2B negotiations — fund onboarding, platform integration, and long-cycle institutional deals</li>
-        <li>Led ETF distribution at Fubon AM for 6 years, building participant dealer and market maker ecosystems from scratch</li>
-        <li>Bilingual (English/Mandarin/Cantonese) with deep cultural fluency across Greater China markets</li>
-      </ul>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Key Competencies</div>
-      <div class="tag-row">
-        <span class="ptag">Institutional BD</span>
-        <span class="ptag">Private Bank Coverage</span>
-        <span class="ptag">ETF Distribution</span>
-        <span class="ptag">Fund Platform Sales</span>
-        <span class="ptag">North Asia</span>
-        <span class="ptag">C-Suite Relationships</span>
-        <span class="ptag">B2B Negotiations</span>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Opening</div>
+        <p class="pitch-opening" id="copy-bd">Sydney Tien is a senior business development leader with over 20 years of institutional sales experience across Hong Kong, Taiwan, and Greater China — with a direct line into private banks, securities firms, and insurance groups at the C-suite level.</p>
       </div>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Why He Stands Out</div>
+        <p class="pitch-body">Currently Head of North Asia Business Development at <strong>Euroclear FundPlace</strong>, Sydney has built the region's institutional client base from the ground up — driving transaction volume growth and expanding distribution into private banks, insurance firms, and institutional investors across the region.</p>
+        <ul class="pitch-bullets">
+          <li>Proven revenue generator with track record of exceeding sales targets across ETFs, mutual funds, money market, and alternative products</li>
+          <li>Deep existing network with decision-makers at tier-1 private banks and securities firms in HK, China, and Taiwan</li>
+          <li>Skilled in complex B2B negotiations — fund onboarding, platform integration, and long-cycle institutional deals</li>
+          <li>Led ETF distribution at Fubon AM for 6 years, building participant dealer and market maker ecosystems from scratch</li>
+          <li>Bilingual (English/Mandarin/Cantonese) with deep cultural fluency across Greater China markets</li>
+        </ul>
+      </div>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Key Competencies</div>
+        <div class="tag-row">
+          <span class="ptag">Institutional BD</span><span class="ptag">Private Bank Coverage</span><span class="ptag">ETF Distribution</span>
+          <span class="ptag">Fund Platform Sales</span><span class="ptag">North Asia</span><span class="ptag">C-Suite Relationships</span><span class="ptag">B2B Negotiations</span>
+        </div>
+      </div>
+      <div class="pitch-cta"><strong>Ideal for:</strong> Regional Head of BD, North Asia Sales Director, Institutional Coverage roles at asset managers, fund platforms, or financial infrastructure firms seeking Greater China market access.</div>
     </div>
 
-    <div class="pitch-cta">
-      <strong>Ideal for:</strong> Regional Head of BD, North Asia Sales Director, Institutional Coverage roles at 
-      asset managers, fund platforms, or financial infrastructure firms seeking Greater China market access.
+    <div class="tab-content cl-tab" id="tc-bd-cl">
+      <div class="cl-actions">
+        <button class="copy-btn" onclick="copyCL('bd')">Copy Letter</button>
+        <button class="print-btn" onclick="printCL('bd')">Print / Save PDF</button>
+      </div>
+      <div class="cl-wrap" id="cl-bd">
+        <div class="cl-gold-bar"></div>
+        <div class="cl-letterhead">
+          <div class="cl-sender">
+            <div class="cl-sender-name">Sydney <em>Tien</em> 田育彬</div>
+            <div class="cl-sender-title">Senior Financial Services Leader · SFC Type 1 RO</div>
+            <div class="cl-sender-contact">Sydney.tien@gmail.com &nbsp;·&nbsp; +852 6662 1326<br>Flat 805, 8F, No 20 Luard Rd, Wanchai, Hong Kong</div>
+          </div>
+          <div class="cl-date" id="cl-date-bd"></div>
+        </div>
+        <div class="cl-body">
+          <p class="cl-salutation">Dear Hiring Manager,</p>
+          <p class="cl-para">I am writing to express my strong interest in a <em>Senior Business Development or Sales Leadership</em> role within your organisation. With over 20 years of institutional sales experience spanning Hong Kong, Taiwan, and Greater China, I have built a career on opening markets, cultivating long-term institutional relationships, and delivering consistent commercial results across complex, cross-border environments.</p>
+          <p class="cl-para">In my current role as <strong>Head of North Asia Business Development at Euroclear FundPlace</strong>, I have led the strategic expansion of a B2B fund distribution platform across the region — growing client adoption among private banks, insurance firms, and institutional investors while spearheading multi-party integration projects with global fund houses and local intermediaries. Prior to this, I drove ETF distribution as Head of ETF Sales at <strong>Fubon Asset Management</strong> for six years, where I built the participant dealer and market maker ecosystem from the ground up and consistently exceeded revenue targets.</p>
+          <p class="cl-para">What distinguishes my approach is the combination of <em>deep product knowledge</em> — across mutual funds, ETFs, money market instruments, and alternative investments — with genuine C-suite relationships at tier-1 financial institutions across the region. I am equally comfortable structuring long-cycle institutional deals as I am presenting to senior investment committees or regulatory bodies such as the Private Wealth Management Association.</p>
+          <p class="cl-para">I hold a <strong>Type 1 SFC Responsible Officer</strong> licence, ensuring that commercial ambition is always grounded in regulatory integrity. I am also developing expertise in <em>Virtual Assets and DeFi</em>, positioning myself at the frontier of next-generation fund distribution.</p>
+          <div class="cl-closing">
+            <p class="cl-closing-text">I would welcome the opportunity to discuss how my background aligns with your organisation's growth ambitions in North Asia. Please find my CV attached for your reference, and I look forward to connecting at your convenience.</p>
+            <div class="cl-sign">Sydney Tien</div>
+            <div class="cl-sign-name">Sydney Tien 田育彬 &nbsp;·&nbsp; Sydney.tien@gmail.com &nbsp;·&nbsp; +852 6662 1326</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- PLATFORM -->
+  <!-- ══ PLATFORM ══ -->
   <div class="pitch-panel" id="panel-platform">
-    <div class="pitch-header">
-      <div>
-        <div class="pitch-role-label">Pitch for · Fund Platform & Operations</div>
-        <div class="pitch-role-title">The <em>platform architect</em> who connects<br>funds to market</div>
+    <div class="panel-tabs">
+      <button class="panel-tab active" onclick="showTab('platform','pitch')" id="tab-platform-pitch"><span class="tab-icon">📋</span> Pitch Brief</button>
+      <button class="panel-tab" onclick="showTab('platform','cl')" id="tab-platform-cl"><span class="tab-icon">✉️</span> Cover Letter</button>
+    </div>
+
+    <div class="tab-content active" id="tc-platform-pitch">
+      <div class="pitch-header">
+        <div>
+          <div class="pitch-role-label">Pitch for · Fund Platform & Operations</div>
+          <div class="pitch-role-title">The <em>platform architect</em> who connects<br>funds to market</div>
+        </div>
+        <div class="action-btns"><button class="copy-btn" onclick="copyPitch('platform')">Copy Text</button></div>
       </div>
-      <button class="copy-btn" onclick="copyPitch('platform')">Copy Text</button>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Opening</div>
-      <p class="pitch-opening" id="copy-platform">
-        Sydney Tien brings rare dual expertise in fund platform strategy and hands-on operational 
-        execution — spanning trading, custody, fund data, and end-to-end intermediary integration 
-        across North Asia's most complex distribution environments.
-      </p>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Why He Stands Out</div>
-      <p class="pitch-body">
-        At <strong>Euroclear FundPlace</strong>, Sydney has led complex multi-party integration projects, 
-        connecting fund houses, custodians, and intermediaries on a single B2B platform. He understands 
-        fund infrastructure not just commercially, but operationally.
-      </p>
-      <ul class="pitch-bullets">
-        <li>Led platform integration projects spanning trading, custody, and fund data services between global fund houses and North Asia intermediaries</li>
-        <li>Extensive experience in mutual fund, ETF, money market, and alternative fund operations across multiple markets</li>
-        <li>Built liquidity ecosystems at Fubon AM in partnership with participant dealers and market makers</li>
-        <li>Deep understanding of fund onboarding lifecycle, suitability frameworks, and post-trade operations</li>
-        <li>Familiar with HKMA, SFC, and CSRC regulatory requirements affecting cross-border fund distribution</li>
-      </ul>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Key Competencies</div>
-      <div class="tag-row">
-        <span class="ptag">Fund Platform BD</span>
-        <span class="ptag">B2B Integration</span>
-        <span class="ptag">Trading Operations</span>
-        <span class="ptag">Custody Services</span>
-        <span class="ptag">ETF Ecosystem</span>
-        <span class="ptag">Mutual Fund Ops</span>
-        <span class="ptag">Intermediary Mgmt</span>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Opening</div>
+        <p class="pitch-opening" id="copy-platform">Sydney Tien brings rare dual expertise in fund platform strategy and hands-on operational execution — spanning trading, custody, fund data, and end-to-end intermediary integration across North Asia's most complex distribution environments.</p>
       </div>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Why He Stands Out</div>
+        <p class="pitch-body">At <strong>Euroclear FundPlace</strong>, Sydney has led complex multi-party integration projects, connecting fund houses, custodians, and intermediaries on a single B2B platform. He understands fund infrastructure not just commercially, but operationally.</p>
+        <ul class="pitch-bullets">
+          <li>Led platform integration projects spanning trading, custody, and fund data services between global fund houses and North Asia intermediaries</li>
+          <li>Extensive experience in mutual fund, ETF, money market, and alternative fund operations across multiple markets</li>
+          <li>Built liquidity ecosystems at Fubon AM in partnership with participant dealers and market makers</li>
+          <li>Deep understanding of fund onboarding lifecycle, suitability frameworks, and post-trade operations</li>
+          <li>Familiar with HKMA, SFC, and CSRC regulatory requirements affecting cross-border fund distribution</li>
+        </ul>
+      </div>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Key Competencies</div>
+        <div class="tag-row">
+          <span class="ptag">Fund Platform BD</span><span class="ptag">B2B Integration</span><span class="ptag">Trading Operations</span>
+          <span class="ptag">Custody Services</span><span class="ptag">ETF Ecosystem</span><span class="ptag">Mutual Fund Ops</span><span class="ptag">Intermediary Mgmt</span>
+        </div>
+      </div>
+      <div class="pitch-cta"><strong>Ideal for:</strong> Platform Head, Head of Distribution Operations, or Senior BD roles at fund supermarkets, clearing platforms, custodian banks, or fintech infrastructure players in Hong Kong.</div>
     </div>
 
-    <div class="pitch-cta">
-      <strong>Ideal for:</strong> Platform Head, Head of Distribution Operations, or Senior BD roles at 
-      fund supermarkets, clearing platforms, custodian banks, or fintech infrastructure players in Hong Kong.
+    <div class="tab-content cl-tab" id="tc-platform-cl">
+      <div class="cl-actions">
+        <button class="copy-btn" onclick="copyCL('platform')">Copy Letter</button>
+        <button class="print-btn" onclick="printCL('platform')">Print / Save PDF</button>
+      </div>
+      <div class="cl-wrap" id="cl-platform">
+        <div class="cl-gold-bar"></div>
+        <div class="cl-letterhead">
+          <div class="cl-sender">
+            <div class="cl-sender-name">Sydney <em>Tien</em> 田育彬</div>
+            <div class="cl-sender-title">Senior Financial Services Leader · SFC Type 1 RO</div>
+            <div class="cl-sender-contact">Sydney.tien@gmail.com &nbsp;·&nbsp; +852 6662 1326<br>Flat 805, 8F, No 20 Luard Rd, Wanchai, Hong Kong</div>
+          </div>
+          <div class="cl-date" id="cl-date-platform"></div>
+        </div>
+        <div class="cl-body">
+          <p class="cl-salutation">Dear Hiring Manager,</p>
+          <p class="cl-para">I am writing to express my keen interest in a <em>Fund Platform or Distribution Operations</em> leadership role within your organisation. My career spans over two decades at the intersection of fund platform strategy and operational execution — giving me a perspective that bridges commercial growth with the technical and regulatory realities of fund distribution infrastructure.</p>
+          <p class="cl-para">As <strong>Head of North Asia Business Development at Euroclear FundPlace</strong>, I have led complex, multi-party platform integration projects connecting global fund houses, custodians, and regional intermediaries on a unified B2B infrastructure. This experience has given me an intimate understanding of the full fund distribution lifecycle — from onboarding and data reconciliation through to trading, settlement, and post-trade reporting — across markets governed by <strong>HKMA, SFC, and CSRC</strong> frameworks.</p>
+          <p class="cl-para">Earlier in my career at <strong>Fubon Asset Management</strong>, I built the ETF distribution ecosystem from the ground up, establishing liquidity partnerships with participant dealers and market makers that underpinned the product's market success. This operational fluency — knowing how platforms break and how to fix them — is what separates my contribution from a purely sales-oriented profile.</p>
+          <p class="cl-para">I also hold a <em>HKSI Virtual Asset Professional certification</em> and am conversant with the emerging VASP regulatory landscape, positioning me well to help organisations navigate the next generation of fund infrastructure challenges in Hong Kong.</p>
+          <div class="cl-closing">
+            <p class="cl-closing-text">I would welcome the opportunity to discuss how my operational and commercial expertise can contribute to your platform's growth objectives across North Asia. Please find my CV enclosed, and I look forward to speaking with you.</p>
+            <div class="cl-sign">Sydney Tien</div>
+            <div class="cl-sign-name">Sydney Tien 田育彬 &nbsp;·&nbsp; Sydney.tien@gmail.com &nbsp;·&nbsp; +852 6662 1326</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- WEALTH MANAGEMENT -->
+  <!-- ══ WEALTH ══ -->
   <div class="pitch-panel" id="panel-wealth">
-    <div class="pitch-header">
-      <div>
-        <div class="pitch-role-label">Pitch for · Wealth Management & Private Banking</div>
-        <div class="pitch-role-title">The <em>trusted advisor</em> to<br>HNW clients and private banks</div>
+    <div class="panel-tabs">
+      <button class="panel-tab active" onclick="showTab('wealth','pitch')" id="tab-wealth-pitch"><span class="tab-icon">📋</span> Pitch Brief</button>
+      <button class="panel-tab" onclick="showTab('wealth','cl')" id="tab-wealth-cl"><span class="tab-icon">✉️</span> Cover Letter</button>
+    </div>
+
+    <div class="tab-content active" id="tc-wealth-pitch">
+      <div class="pitch-header">
+        <div>
+          <div class="pitch-role-label">Pitch for · Wealth Management & Private Banking</div>
+          <div class="pitch-role-title">The <em>trusted advisor</em> to<br>HNW clients and private banks</div>
+        </div>
+        <div class="action-btns"><button class="copy-btn" onclick="copyPitch('wealth')">Copy Text</button></div>
       </div>
-      <button class="copy-btn" onclick="copyPitch('wealth')">Copy Text</button>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Opening</div>
-      <p class="pitch-opening" id="copy-wealth">
-        Sydney Tien has spent over two decades at the intersection of institutional product 
-        structuring and high-net-worth client solutions — designing, launching, and distributing 
-        offshore investment products through private banking channels across Greater China.
-      </p>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Why He Stands Out</div>
-      <p class="pitch-body">
-        As Managing Director at <strong>Lupu Asset Management</strong>, Sydney led end-to-end 
-        offshore product initiatives tailored for HNW clients — managing product structuring, 
-        risk alignment, KYC onboarding, and private bank channel distribution simultaneously.
-      </p>
-      <ul class="pitch-bullets">
-        <li>Structured and launched offshore Private Banking and Trust Company products for HNW and UHNW clients</li>
-        <li>Deep working relationships with private banking gatekeepers and product selectors across HK and Greater China</li>
-        <li>Expertise in matching client risk profiles with appropriate investment product structures</li>
-        <li>SFC Type 1 Responsible Officer — fully licensed to advise on securities and investment products</li>
-        <li>Emerging expertise in Web3, DeFi, and Virtual Asset products — well-positioned for next-generation wealth offerings</li>
-      </ul>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Key Competencies</div>
-      <div class="tag-row">
-        <span class="ptag">HNW Client Solutions</span>
-        <span class="ptag">Offshore Products</span>
-        <span class="ptag">Private Banking</span>
-        <span class="ptag">Product Structuring</span>
-        <span class="ptag">Trust Structures</span>
-        <span class="ptag">Virtual Assets</span>
-        <span class="ptag">KYC / Suitability</span>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Opening</div>
+        <p class="pitch-opening" id="copy-wealth">Sydney Tien has spent over two decades at the intersection of institutional product structuring and high-net-worth client solutions — designing, launching, and distributing offshore investment products through private banking channels across Greater China.</p>
       </div>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Why He Stands Out</div>
+        <p class="pitch-body">As Managing Director at <strong>Lupu Asset Management</strong>, Sydney led end-to-end offshore product initiatives tailored for HNW clients — managing product structuring, risk alignment, KYC onboarding, and private bank channel distribution simultaneously.</p>
+        <ul class="pitch-bullets">
+          <li>Structured and launched offshore Private Banking and Trust Company products for HNW and UHNW clients</li>
+          <li>Deep working relationships with private banking gatekeepers and product selectors across HK and Greater China</li>
+          <li>Expertise in matching client risk profiles with appropriate investment product structures</li>
+          <li>SFC Type 1 Responsible Officer — fully licensed to advise on securities and investment products</li>
+          <li>Emerging expertise in Web3, DeFi, and Virtual Asset products — well-positioned for next-generation wealth offerings</li>
+        </ul>
+      </div>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Key Competencies</div>
+        <div class="tag-row">
+          <span class="ptag">HNW Client Solutions</span><span class="ptag">Offshore Products</span><span class="ptag">Private Banking</span>
+          <span class="ptag">Product Structuring</span><span class="ptag">Trust Structures</span><span class="ptag">Virtual Assets</span><span class="ptag">KYC / Suitability</span>
+        </div>
+      </div>
+      <div class="pitch-cta"><strong>Ideal for:</strong> Head of WM Products, Private Bank Coverage Director, or Senior Relationship Manager roles at private banks, family offices, or wealth platforms seeking Greater China expertise.</div>
     </div>
 
-    <div class="pitch-cta">
-      <strong>Ideal for:</strong> Head of WM Products, Private Bank Coverage Director, or Senior Relationship Manager 
-      roles at private banks, family offices, or wealth platforms seeking Greater China expertise.
+    <div class="tab-content cl-tab" id="tc-wealth-cl">
+      <div class="cl-actions">
+        <button class="copy-btn" onclick="copyCL('wealth')">Copy Letter</button>
+        <button class="print-btn" onclick="printCL('wealth')">Print / Save PDF</button>
+      </div>
+      <div class="cl-wrap" id="cl-wealth">
+        <div class="cl-gold-bar"></div>
+        <div class="cl-letterhead">
+          <div class="cl-sender">
+            <div class="cl-sender-name">Sydney <em>Tien</em> 田育彬</div>
+            <div class="cl-sender-title">Senior Financial Services Leader · SFC Type 1 RO</div>
+            <div class="cl-sender-contact">Sydney.tien@gmail.com &nbsp;·&nbsp; +852 6662 1326<br>Flat 805, 8F, No 20 Luard Rd, Wanchai, Hong Kong</div>
+          </div>
+          <div class="cl-date" id="cl-date-wealth"></div>
+        </div>
+        <div class="cl-body">
+          <p class="cl-salutation">Dear Hiring Manager,</p>
+          <p class="cl-para">I am writing to express my interest in a <em>Wealth Management or Private Banking</em> leadership role within your organisation. Over the course of a 20-year career in financial services, I have developed a deep specialism in designing and distributing sophisticated investment solutions for high-net-worth and ultra-high-net-worth clients across Hong Kong and Greater China.</p>
+          <p class="cl-para">As <strong>Managing Director at Lupu Asset Management</strong>, I oversaw the end-to-end development of offshore Private Banking and Trust Company products tailored to HNW investors. This encompassed product structuring, risk profiling, regulatory compliance, KYC onboarding, and ongoing client relationship management — ensuring each solution was precisely matched to the client's investment objectives and risk appetite. I cultivated strong relationships with senior product selectors and relationship managers at major private banks across the region.</p>
+          <p class="cl-para">My commercial relationships span <em>private banks, family offices, securities firms, and insurance groups</em> across Hong Kong, mainland China, and Taiwan — built over years of consistent, trust-based engagement at the senior decision-maker level. Combined with my <strong>SFC Type 1 Responsible Officer</strong> licence, I bring both the market access and the regulatory standing that premier wealth management roles demand.</p>
+          <p class="cl-para">I am also actively developing expertise in <em>Virtual Assets, DeFi, and Web3-native investment structures</em> through certified programmes with the Blockchain Council and HKSI — an area of growing relevance for sophisticated wealth clients seeking portfolio diversification beyond traditional asset classes.</p>
+          <div class="cl-closing">
+            <p class="cl-closing-text">I would be delighted to explore how my background in HNW product development and private banking relationships can contribute to your organisation's wealth management growth strategy. Please find my CV attached, and I look forward to speaking with you at your earliest convenience.</p>
+            <div class="cl-sign">Sydney Tien</div>
+            <div class="cl-sign-name">Sydney Tien 田育彬 &nbsp;·&nbsp; Sydney.tien@gmail.com &nbsp;·&nbsp; +852 6662 1326</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- COMPLIANCE / REG -->
+  <!-- ══ COMPLIANCE ══ -->
   <div class="pitch-panel" id="panel-reg">
-    <div class="pitch-header">
-      <div>
-        <div class="pitch-role-label">Pitch for · Compliance & Regulatory Affairs</div>
-        <div class="pitch-role-title">The <em>regulatory expert</em> who has<br>sat in the RO seat</div>
+    <div class="panel-tabs">
+      <button class="panel-tab active" onclick="showTab('reg','pitch')" id="tab-reg-pitch"><span class="tab-icon">📋</span> Pitch Brief</button>
+      <button class="panel-tab" onclick="showTab('reg','cl')" id="tab-reg-cl"><span class="tab-icon">✉️</span> Cover Letter</button>
+    </div>
+
+    <div class="tab-content active" id="tc-reg-pitch">
+      <div class="pitch-header">
+        <div>
+          <div class="pitch-role-label">Pitch for · Compliance & Regulatory Affairs</div>
+          <div class="pitch-role-title">The <em>regulatory expert</em> who has<br>sat in the RO seat</div>
+        </div>
+        <div class="action-btns"><button class="copy-btn" onclick="copyPitch('reg')">Copy Text</button></div>
       </div>
-      <button class="copy-btn" onclick="copyPitch('reg')">Copy Text</button>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Opening</div>
-      <p class="pitch-opening" id="copy-reg">
-        Sydney Tien is a licensed SFC Responsible Officer (Type 1) with direct experience 
-        overseeing compliance frameworks across Type 1, 4, and 9 regulated activities — 
-        including AML/CFT programmes, SFC liaison, and front-to-back operational governance.
-      </p>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Why He Stands Out</div>
-      <p class="pitch-body">
-        As Managing Director at <strong>Globe Capital Asset Management</strong>, Sydney served as 
-        the designated SFC Responsible Officer, building compliance infrastructure from the ground 
-        up — covering AML controls, regulatory reporting, and staff conduct frameworks.
-      </p>
-      <ul class="pitch-bullets">
-        <li>SFC Responsible Officer for Type 1 (Dealing in Securities), Type 4 (Advising on Securities), and Type 9 (Asset Management)</li>
-        <li>Designed and implemented AML/CFT controls, risk assessment frameworks, and transaction monitoring systems</li>
-        <li>Direct SFC liaison experience — managing licensing submissions, regulatory notifications, and routine inspections</li>
-        <li>Developed client onboarding protocols, suitability assessments, and conflict-of-interest policies per HKMA and SFC requirements</li>
-        <li>HKSI-certified Virtual Asset Professional — capable of navigating the evolving VA regulatory framework in Hong Kong</li>
-      </ul>
-    </div>
-
-    <div class="pitch-block">
-      <div class="pitch-block-label">Key Competencies</div>
-      <div class="tag-row">
-        <span class="ptag">SFC Type 1 RO</span>
-        <span class="ptag">AML / CFT</span>
-        <span class="ptag">SFC Liaison</span>
-        <span class="ptag">Type 4 & 9</span>
-        <span class="ptag">HKMA Compliance</span>
-        <span class="ptag">Virtual Assets (VASP)</span>
-        <span class="ptag">Risk Governance</span>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Opening</div>
+        <p class="pitch-opening" id="copy-reg">Sydney Tien is a licensed SFC Responsible Officer (Type 1) with direct experience overseeing compliance frameworks across Type 1, 4, and 9 regulated activities — including AML/CFT programmes, SFC liaison, and front-to-back operational governance.</p>
       </div>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Why He Stands Out</div>
+        <p class="pitch-body">As Managing Director at <strong>Globe Capital Asset Management</strong>, Sydney served as the designated SFC Responsible Officer, building compliance infrastructure from the ground up — covering AML controls, regulatory reporting, and staff conduct frameworks.</p>
+        <ul class="pitch-bullets">
+          <li>SFC Responsible Officer for Type 1 (Dealing in Securities), Type 4 (Advising on Securities), and Type 9 (Asset Management)</li>
+          <li>Designed and implemented AML/CFT controls, risk assessment frameworks, and transaction monitoring systems</li>
+          <li>Direct SFC liaison experience — managing licensing submissions, regulatory notifications, and routine inspections</li>
+          <li>Developed client onboarding protocols, suitability assessments, and conflict-of-interest policies per HKMA and SFC requirements</li>
+          <li>HKSI-certified Virtual Asset Professional — capable of navigating the evolving VA regulatory framework in Hong Kong</li>
+        </ul>
+      </div>
+      <div class="pitch-block">
+        <div class="pitch-block-label">Key Competencies</div>
+        <div class="tag-row">
+          <span class="ptag">SFC Type 1 RO</span><span class="ptag">AML / CFT</span><span class="ptag">SFC Liaison</span>
+          <span class="ptag">Type 4 & 9</span><span class="ptag">HKMA Compliance</span><span class="ptag">Virtual Assets (VASP)</span><span class="ptag">Risk Governance</span>
+        </div>
+      </div>
+      <div class="pitch-cta"><strong>Ideal for:</strong> Chief Compliance Officer, Compliance Manager, or SFC Responsible Officer roles at asset managers, fund platforms, or Virtual Asset Service Providers (VASPs) in Hong Kong.</div>
     </div>
 
-    <div class="pitch-cta">
-      <strong>Ideal for:</strong> Chief Compliance Officer, Compliance Manager, or SFC Responsible Officer 
-      roles at asset managers, fund platforms, or Virtual Asset Service Providers (VASPs) in Hong Kong.
+    <div class="tab-content cl-tab" id="tc-reg-cl">
+      <div class="cl-actions">
+        <button class="copy-btn" onclick="copyCL('reg')">Copy Letter</button>
+        <button class="print-btn" onclick="printCL('reg')">Print / Save PDF</button>
+      </div>
+      <div class="cl-wrap" id="cl-reg">
+        <div class="cl-gold-bar"></div>
+        <div class="cl-letterhead">
+          <div class="cl-sender">
+            <div class="cl-sender-name">Sydney <em>Tien</em> 田育彬</div>
+            <div class="cl-sender-title">Senior Financial Services Leader · SFC Type 1 RO</div>
+            <div class="cl-sender-contact">Sydney.tien@gmail.com &nbsp;·&nbsp; +852 6662 1326<br>Flat 805, 8F, No 20 Luard Rd, Wanchai, Hong Kong</div>
+          </div>
+          <div class="cl-date" id="cl-date-reg"></div>
+        </div>
+        <div class="cl-body">
+          <p class="cl-salutation">Dear Hiring Manager,</p>
+          <p class="cl-para">I am writing to express my interest in a <em>Compliance or Regulatory Affairs</em> leadership role within your organisation. As a licensed <strong>SFC Responsible Officer across Type 1, 4, and 9 regulated activities</strong>, I bring the rare combination of practical compliance experience and a commercial operator's understanding of how regulatory frameworks shape business outcomes in Hong Kong's asset management industry.</p>
+          <p class="cl-para">Serving as Managing Director and designated Responsible Officer at <strong>Globe Capital Asset Management</strong>, I built the firm's compliance infrastructure from inception — designing and implementing AML/CFT controls, risk assessment methodologies, transaction monitoring systems, and staff training programmes. I served as the primary liaison to the <strong>SFC</strong> for all regulatory filings, inspection visits, and licensing matters, and worked closely with legal counsel to proactively identify and address compliance gaps before they became regulatory risks.</p>
+          <p class="cl-para">Beyond formal compliance duties, my experience in institutional business development gives me a nuanced understanding of where <em>commercial pressures and regulatory obligations intersect</em> — enabling me to advise leadership teams and front-office staff in ways that are both pragmatic and fully compliant with <strong>HKMA and SFC</strong> expectations on suitability, conflict-of-interest management, and client onboarding.</p>
+          <p class="cl-para">I hold a <em>HKSI Virtual Asset Professional certification</em> and am well-versed in the evolving VASP licensing and conduct requirements in Hong Kong — particularly relevant as financial institutions navigate the SFC's expanding digital asset regulatory framework.</p>
+          <div class="cl-closing">
+            <p class="cl-closing-text">I would welcome the opportunity to discuss how my regulatory expertise and operational experience can strengthen your compliance function. My CV is attached for your review, and I look forward to the possibility of connecting with your team.</p>
+            <div class="cl-sign">Sydney Tien</div>
+            <div class="cl-sign-name">Sydney Tien 田育彬 &nbsp;·&nbsp; Sydney.tien@gmail.com &nbsp;·&nbsp; +852 6662 1326</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -761,12 +692,29 @@
 </div>
 
 <script>
+  // Auto-fill today's date
+  const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  ['bd','platform','wealth','reg'].forEach(id => {
+    const el = document.getElementById('cl-date-' + id);
+    if (el) el.textContent = today;
+  });
+
   function showPitch(id) {
     document.querySelectorAll('.pitch-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('panel-' + id).classList.add('active');
     document.getElementById('btn-' + id).classList.add('active');
-    document.querySelector('.pitch-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    setTimeout(() => {
+      document.querySelector('.pitch-area').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 50);
+  }
+
+  function showTab(role, tab) {
+    const panel = document.getElementById('panel-' + role);
+    panel.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    panel.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tc-' + role + '-' + tab).classList.add('active');
+    document.getElementById('tab-' + role + '-' + tab).classList.add('active');
   }
 
   function copyPitch(id) {
@@ -774,16 +722,31 @@
     const texts = [];
     const opening = document.getElementById('copy-' + id);
     if (opening) texts.push(opening.innerText.trim());
-    panel.querySelectorAll('.pitch-body, .pitch-bullets li').forEach(el => {
-      texts.push(el.innerText.trim());
-    });
-    const full = texts.join('\n\n');
-    navigator.clipboard.writeText(full).then(() => {
-      const btn = panel.querySelector('.copy-btn');
-      btn.textContent = 'Copied ✓';
-      btn.classList.add('copied');
+    panel.querySelectorAll('.pitch-body, .pitch-bullets li').forEach(el => texts.push(el.innerText.trim()));
+    navigator.clipboard.writeText(texts.join('\n\n')).then(() => {
+      const btn = document.querySelector('#tc-' + id + '-pitch .copy-btn');
+      btn.textContent = 'Copied ✓'; btn.classList.add('copied');
       setTimeout(() => { btn.textContent = 'Copy Text'; btn.classList.remove('copied'); }, 2500);
     });
+  }
+
+  function copyCL(id) {
+    const cl = document.getElementById('cl-' + id);
+    navigator.clipboard.writeText(cl.innerText.trim()).then(() => {
+      const btn = document.querySelector('#tc-' + id + '-cl .copy-btn');
+      btn.textContent = 'Copied ✓'; btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy Letter'; btn.classList.remove('copied'); }, 2500);
+    });
+  }
+
+  function printCL(id) {
+    // Temporarily show only the target panel's CL tab for printing
+    const allPanels = document.querySelectorAll('.pitch-panel');
+    const allActive = [...allPanels].map(p => p.classList.contains('active'));
+    // Ensure correct panel + CL tab is active before print
+    showPitch(id);
+    showTab(id, 'cl');
+    setTimeout(() => window.print(), 150);
   }
 </script>
 </body>
